@@ -14,7 +14,7 @@ public enum AGNHTTPMethod: String {
 }
 
 extension AGNHTTPMethod {
-    func path(from basePath:String, and parameters: [String: Any]?) -> String? {
+    func path(from basePath:String, and parameters: [String: Any]?) -> String {
         var string = basePath
         guard self == .get, let parameters = parameters else {
             return string

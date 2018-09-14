@@ -17,6 +17,16 @@ class AGNHTTPMethodTests: XCTestCase {
         let parameters: [String: Any] = ["name": "John",
                                          "age": 21]
         let path = method.path(from: "https://example.com/", and: parameters)
-        XCTAssertEqual(path, "https://example.com/?name=John&age=21")
+        XCTAssertTrue(path == "https://example.com/?name=John&age=21" ||
+            path == "https://example.com/?age=21&name=John", "Wrong path: \(path)")
+    }
+    
+    func testPostPath() {
+        let method = AGNHTTPMethod.post
+        
+        let parameters: [String: Any] = ["name": "John",
+                                         "age": 21]
+        let path = method.path(from: "https://example.com/", and: parameters)
+        XCTAssertTrue(path == "https://example.com/", "Wrong path: \(path)")
     }
 }
