@@ -7,4 +7,4 @@ script:
 - xcodebuild test -project AGNetwork.xcodeproj -scheme AGNetwork -destination 'platform=iOS Simulator,name=iPhone 8'
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -J "AGNetwork"
+  - bash <(curl -s https://codecov.io/bash)
