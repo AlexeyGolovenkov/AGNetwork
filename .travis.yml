@@ -2,6 +2,6 @@ language: swift
 osx_image: xcode10
 
 script:
-cd AGNetwork
-xcodebuild clean -project AGNetwork.xcodeproj -scheme AGNetwork
-xcodebuild test -project AGNetwork.xcodeproj -scheme AGNetwork -destination 'platform=iOS Simulator,name=iPhone 8'
+- cd AGNetwork
+- xcodebuild clean -project AGNetwork.xcodeproj -scheme AGNetwork
+- xcodebuild test -project AGNetwork.xcodeproj -scheme AGNetwork -destination 'platform=iOS Simulator,name=iPhone 8'
