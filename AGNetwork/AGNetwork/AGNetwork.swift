@@ -1,0 +1,80 @@
+//
+//  AGNetwork.swift
+//  AGNetwork
+//
+//  Created by Alex Golovenkov on 15/09/2018.
+//  Copyright © 2018 AGSoft. All rights reserved.
+//
+
+import UIKit
+
+public typealias AGNetworkCompletionClosure = (Any?, Error?) -> Void
+public let AGNActiveRequestAppearedNotification = Notification.Name("AGNActiveRequest")
+public let AGNNoActiveRequestNotification = Notification.Name("AGNActiveRequest")
+
+public class AGNetwork {
+    static let shared = AGNetwork()
+    
+    var requestsCount = 0 {
+        didSet {
+            guard requestsCount != oldValue else {
+                // request counter not changed. No necessity to send notification
+                return
+            }
+            if requestsCount == 0 {
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: AGNActiveRequestAppearedNotification, object: self)
+                }
+            } else {
+                if oldValue == 0 {
+                    DispatchQueue.main.async {
+                        NotificationCenter.default.post(name: AGNNoActiveRequestNotification, object: self)
+                    }
+                }
+            }
+        }
+    }
+    
+    public var baseURL = ""
+    public var session: URLSession!
+    public var authorizationHeader: [String: String]?
+    
+    init() {
+        session = URLSession(configuration: AGNetwork.sessionConfiguration())
+    }
+}
+
+fileprivate extension AGNetwork {
+    class func sessionConfiguration() -> URLSessionConfiguration {
+        let configuration = URLSessionConfiguration.default
+        
+        // configure session here
+        configuration.requestCachePolicy = .returnCacheDataElseLoad
+        
+        return configuration
+    }
+    
+    func request(for pathString: String, method: AGNHTTPMethod, parameters: [String: Any]?) -> URLRequest? {
+        let path = method.path(from: pathString, and: parameters)
+        
+        guard let fullPath = "\(self.baseURL)\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return nil
+        }
+        guard let url = URL(string: fullPath) else {
+            return nil
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = method.rawValue
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        if let headers = self.authorizationHeader {
+            for header in headers {
+                request.setValue(header.value, forHTTPHeaderField: header.key)
+            }
+        }
+        request.httpBody = method.body(for: parameters)
+        
+        return request
+    }
+}
