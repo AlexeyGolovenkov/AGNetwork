@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2714BFC9214D0F53006094EB /* AGNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714BFC8214D0F53006094EB /* AGNetwork.swift */; };
+		2714BFCB214D80B6006094EB /* AGNResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714BFCA214D80B6006094EB /* AGNResponse.swift */; };
 		27644809214C4BB500414BAE /* AGNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276447FF214C4BB500414BAE /* AGNetwork.framework */; };
 		2764480E214C4BB500414BAE /* AGNHTTPMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2764480D214C4BB500414BAE /* AGNHTTPMethodTests.swift */; };
 		27644810214C4BB500414BAE /* AGNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 27644802214C4BB500414BAE /* AGNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		2714BFC8214D0F53006094EB /* AGNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGNetwork.swift; sourceTree = "<group>"; };
+		2714BFCA214D80B6006094EB /* AGNResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGNResponse.swift; sourceTree = "<group>"; };
 		276447FF214C4BB500414BAE /* AGNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AGNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27644802214C4BB500414BAE /* AGNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGNetwork.h; sourceTree = "<group>"; };
 		27644803214C4BB500414BAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				27644803214C4BB500414BAE /* Info.plist */,
 				27644819214C4C9400414BAE /* AGNHTTPMethod.swift */,
 				2714BFC8214D0F53006094EB /* AGNetwork.swift */,
+				2714BFCA214D80B6006094EB /* AGNResponse.swift */,
 			);
 			path = AGNetwork;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2714BFC9214D0F53006094EB /* AGNetwork.swift in Sources */,
+				2714BFCB214D80B6006094EB /* AGNResponse.swift in Sources */,
 				2764481A214C4C9400414BAE /* AGNHTTPMethod.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

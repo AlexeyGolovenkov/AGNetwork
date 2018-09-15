@@ -42,6 +42,53 @@ public class AGNetwork {
     init() {
         session = URLSession(configuration: AGNetwork.sessionConfiguration())
     }
+    
+    public func getData(from path: String, method: AGNHTTPMethod = .get, parameters: [String: Any]? = nil, completion:@escaping AGNetworkCompletionClosure) {
+        guard let request = self.request(for: path, method: method, parameters: parameters) else {
+            return
+        }
+        requestsCount += 1
+        let task = self.session.dataTask(with: request) { (data, response, error) in
+            if self.requestsCount > 0 {
+                self.requestsCount -= 1
+            }
+            guard error == nil else {
+                completion(nil, error)
+                return
+            }
+            completion(data, nil)
+        }
+        task.resume()
+    }
+    
+    public func get<T:Decodable>(to path: String, parameters: [String: Any]? = nil, method: AGNHTTPMethod = .get, convertTo type: T.Type, completion: @escaping AGNetworkCompletionClosure) {
+        getData(from: path, method: method, parameters: parameters) { data, error in
+            guard error == nil, let data = data as? Data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            var serializationError: Error?
+            var response: AGNResponse<T>?
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                response = try decoder.decode(AGNResponse<T>.self, from: data)
+            } catch let parsingError {
+                serializationError = parsingError
+            }
+            guard response != nil, response?.error == nil else {
+                DispatchQueue.main.async {
+                    completion(nil, response?.error?.error)
+                }
+                return
+            }
+            DispatchQueue.main.async {
+                completion(response, serializationError)
+            }
+        }
+    }
 }
 
 fileprivate extension AGNetwork {
