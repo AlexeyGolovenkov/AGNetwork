@@ -44,4 +44,20 @@ class AGNCoreTests: XCTestCase {
         self.wait(for: [expectation], timeout: 15.0)
     }
     
+    func testErrorWithDomainRequest() {
+        let expectation = self.expectation(description: "Error Request expectation")
+        AGNetwork.shared.get(from: "errorWithDomain", parameters: nil, convertTo: EmptyResponse.self) { (response, error) in
+            XCTAssertNotNil(error, "Error must appear")
+            let errorCode = (error! as NSError).code
+            XCTAssertEqual(errorCode, 401, "Wrong error code: \(errorCode)")
+            let errorMessage = (error! as NSError).localizedDescription
+            XCTAssertEqual(errorMessage, "Authentification failed", "Wrong error message: \(errorMessage)")
+            let domain = (error! as NSError).domain
+            XCTAssertEqual(domain, "global", "Wrong error domain: \(domain)")
+            
+            expectation.fulfill()
+        }
+        self.wait(for: [expectation], timeout: 15.0)
+    }
+    
 }

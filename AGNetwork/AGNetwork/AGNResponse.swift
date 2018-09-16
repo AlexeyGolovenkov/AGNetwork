@@ -13,15 +13,17 @@ fileprivate let errorDomain = "AGNetwork"
 public class NetworkError: Decodable {
     var code: Int?
     var message: String?
+    var domain: String?
     
     var error: Error {
         get {
-            return NSError(domain: errorDomain, code: code ?? -1, userInfo: [NSLocalizedDescriptionKey: message ?? ""])
+            return NSError(domain: domain ?? errorDomain, code: code ?? -1, userInfo: [NSLocalizedDescriptionKey: message ?? ""])
         }
     }
 }
 
 public struct AGNResponse<T : Decodable>: Decodable {
     let error: NetworkError?
+    let errors: [NetworkError]?
     let data: T?
 }

@@ -13,6 +13,7 @@
 		2714BFD1214E4915006094EB /* error_anon.json in Resources */ = {isa = PBXBuildFile; fileRef = 2714BFD0214E4915006094EB /* error_anon.json */; };
 		2714BFD3214E4A62006094EB /* AGNCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714BFD2214E4A62006094EB /* AGNCoreTests.swift */; };
 		2714BFD5214E4EA7006094EB /* TestRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714BFD4214E4EA7006094EB /* TestRequests.swift */; };
+		2714BFD7214E7385006094EB /* errorWithDomain_anon.json in Resources */ = {isa = PBXBuildFile; fileRef = 2714BFD6214E7385006094EB /* errorWithDomain_anon.json */; };
 		27644809214C4BB500414BAE /* AGNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276447FF214C4BB500414BAE /* AGNetwork.framework */; };
 		2764480E214C4BB500414BAE /* AGNHTTPMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2764480D214C4BB500414BAE /* AGNHTTPMethodTests.swift */; };
 		27644810214C4BB500414BAE /* AGNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 27644802214C4BB500414BAE /* AGNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -36,6 +37,7 @@
 		2714BFD0214E4915006094EB /* error_anon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error_anon.json; sourceTree = "<group>"; };
 		2714BFD2214E4A62006094EB /* AGNCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGNCoreTests.swift; sourceTree = "<group>"; };
 		2714BFD4214E4EA7006094EB /* TestRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRequests.swift; sourceTree = "<group>"; };
+		2714BFD6214E7385006094EB /* errorWithDomain_anon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = errorWithDomain_anon.json; sourceTree = "<group>"; };
 		276447FF214C4BB500414BAE /* AGNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AGNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27644802214C4BB500414BAE /* AGNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGNetwork.h; sourceTree = "<group>"; };
 		27644803214C4BB500414BAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				2714BFD0214E4915006094EB /* error_anon.json */,
+				2714BFD6214E7385006094EB /* errorWithDomain_anon.json */,
 			);
 			path = TestData;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2714BFD7214E7385006094EB /* errorWithDomain_anon.json in Resources */,
 				2714BFD1214E4915006094EB /* error_anon.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
