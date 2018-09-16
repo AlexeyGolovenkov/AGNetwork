@@ -1,0 +1,7 @@
+{
+    "error": {
+        "code": 401,
+        "message": "Authentification failed",
+        "details": null
+    }
+}

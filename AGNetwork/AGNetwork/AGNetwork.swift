@@ -61,7 +61,7 @@ public class AGNetwork {
         task.resume()
     }
     
-    public func get<T:Decodable>(to path: String, parameters: [String: Any]? = nil, method: AGNHTTPMethod = .get, convertTo type: T.Type, completion: @escaping AGNetworkCompletionClosure) {
+    public func get<T:Decodable>(from path: String, parameters: [String: Any]? = nil, method: AGNHTTPMethod = .get, convertTo type: T.Type, completion: @escaping AGNetworkCompletionClosure) {
         getData(from: path, method: method, parameters: parameters) { data, error in
             guard error == nil, let data = data as? Data else {
                 DispatchQueue.main.async {

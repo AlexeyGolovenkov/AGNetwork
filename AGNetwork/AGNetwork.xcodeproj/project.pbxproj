@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		2714BFC9214D0F53006094EB /* AGNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714BFC8214D0F53006094EB /* AGNetwork.swift */; };
 		2714BFCB214D80B6006094EB /* AGNResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714BFCA214D80B6006094EB /* AGNResponse.swift */; };
+		2714BFCE214E441A006094EB /* FakeServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714BFCD214E441A006094EB /* FakeServer.swift */; };
+		2714BFD1214E4915006094EB /* error_anon.json in Resources */ = {isa = PBXBuildFile; fileRef = 2714BFD0214E4915006094EB /* error_anon.json */; };
+		2714BFD3214E4A62006094EB /* AGNCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714BFD2214E4A62006094EB /* AGNCoreTests.swift */; };
+		2714BFD5214E4EA7006094EB /* TestRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714BFD4214E4EA7006094EB /* TestRequests.swift */; };
 		27644809214C4BB500414BAE /* AGNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276447FF214C4BB500414BAE /* AGNetwork.framework */; };
 		2764480E214C4BB500414BAE /* AGNHTTPMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2764480D214C4BB500414BAE /* AGNHTTPMethodTests.swift */; };
 		27644810214C4BB500414BAE /* AGNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 27644802214C4BB500414BAE /* AGNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -28,6 +32,10 @@
 /* Begin PBXFileReference section */
 		2714BFC8214D0F53006094EB /* AGNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGNetwork.swift; sourceTree = "<group>"; };
 		2714BFCA214D80B6006094EB /* AGNResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGNResponse.swift; sourceTree = "<group>"; };
+		2714BFCD214E441A006094EB /* FakeServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeServer.swift; sourceTree = "<group>"; };
+		2714BFD0214E4915006094EB /* error_anon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error_anon.json; sourceTree = "<group>"; };
+		2714BFD2214E4A62006094EB /* AGNCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGNCoreTests.swift; sourceTree = "<group>"; };
+		2714BFD4214E4EA7006094EB /* TestRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRequests.swift; sourceTree = "<group>"; };
 		276447FF214C4BB500414BAE /* AGNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AGNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27644802214C4BB500414BAE /* AGNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGNetwork.h; sourceTree = "<group>"; };
 		27644803214C4BB500414BAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +64,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2714BFCC214E43E2006094EB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2714BFCD214E441A006094EB /* FakeServer.swift */,
+				2714BFD4214E4EA7006094EB /* TestRequests.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2714BFCF214E4807006094EB /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+				2714BFD0214E4915006094EB /* error_anon.json */,
+			);
+			path = TestData;
+			sourceTree = "<group>";
+		};
 		276447F5214C4BB500414BAE = {
 			isa = PBXGroup;
 			children = (
@@ -89,7 +114,10 @@
 		2764480C214C4BB500414BAE /* AGNetworkTests */ = {
 			isa = PBXGroup;
 			children = (
+				2714BFCF214E4807006094EB /* TestData */,
+				2714BFCC214E43E2006094EB /* Utilities */,
 				2764480D214C4BB500414BAE /* AGNHTTPMethodTests.swift */,
+				2714BFD2214E4A62006094EB /* AGNCoreTests.swift */,
 				2764480F214C4BB500414BAE /* Info.plist */,
 			);
 			path = AGNetworkTests;
@@ -195,6 +223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2714BFD1214E4915006094EB /* error_anon.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +245,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2764480E214C4BB500414BAE /* AGNHTTPMethodTests.swift in Sources */,
+				2714BFD5214E4EA7006094EB /* TestRequests.swift in Sources */,
+				2714BFCE214E441A006094EB /* FakeServer.swift in Sources */,
+				2714BFD3214E4A62006094EB /* AGNCoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
