@@ -14,7 +14,7 @@ public let AGNNoActiveRequestNotification = Notification.Name("AGNActiveRequest"
 
 public class AGNetwork {
     static let shared = AGNetwork()
-    
+
     var requestsCount = 0 {
         didSet {
             guard requestsCount != oldValue else {
@@ -34,21 +34,24 @@ public class AGNetwork {
             }
         }
     }
-    
+
     public var baseURL = ""
     public var session: URLSession!
     public var authorizationHeader: [String: String]?
-    
+
     init() {
         session = URLSession(configuration: AGNetwork.sessionConfiguration())
     }
-    
-    public func getData(from path: String, method: AGNHTTPMethod = .get, parameters: [String: Any]? = nil, completion:@escaping AGNetworkCompletionClosure) {
+
+    public func getData(from path: String,
+                        method: AGNHTTPMethod = .get,
+                        parameters: [String: Any]? = nil,
+                        completion: @escaping AGNetworkCompletionClosure) {
         guard let request = self.request(for: path, method: method, parameters: parameters) else {
             return
         }
         requestsCount += 1
-        let task = self.session.dataTask(with: request) { (data, response, error) in
+        let task = self.session.dataTask(with: request) { (data, _, error) in
             if self.requestsCount > 0 {
                 self.requestsCount -= 1
             }
@@ -60,8 +63,12 @@ public class AGNetwork {
         }
         task.resume()
     }
-    
-    public func get<T:Decodable>(from path: String, parameters: [String: Any]? = nil, method: AGNHTTPMethod = .get, convertTo type: T.Type, completion: @escaping AGNetworkCompletionClosure) {
+
+    public func get<T: Decodable>(from path: String,
+                                  parameters: [String: Any]? = nil,
+                                  method: AGNHTTPMethod = .get,
+                                  convertTo type: T.Type,
+                                  completion: @escaping AGNetworkCompletionClosure) {
         getData(from: path, method: method, parameters: parameters) { data, error in
             guard error == nil, let data = data as? Data else {
                 DispatchQueue.main.async {
@@ -94,23 +101,24 @@ public class AGNetwork {
 fileprivate extension AGNetwork {
     class func sessionConfiguration() -> URLSessionConfiguration {
         let configuration = URLSessionConfiguration.default
-        
+
         // configure session here
         configuration.requestCachePolicy = .returnCacheDataElseLoad
-        
+
         return configuration
     }
-    
+
     func request(for pathString: String, method: AGNHTTPMethod, parameters: [String: Any]?) -> URLRequest? {
         let path = method.path(from: pathString, and: parameters)
-        
-        guard let fullPath = "\(self.baseURL)\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+
+        let originalPath = "\(self.baseURL)\(path)"
+        guard let fullPath = originalPath.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return nil
         }
         guard let url = URL(string: fullPath) else {
             return nil
         }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -121,7 +129,7 @@ fileprivate extension AGNetwork {
             }
         }
         request.httpBody = method.body(for: parameters)
-        
+
         return request
     }
 }

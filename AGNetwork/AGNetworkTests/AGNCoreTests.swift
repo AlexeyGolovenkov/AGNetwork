@@ -15,11 +15,11 @@ class AGNCoreTests: XCTestCase {
         AGNetwork.shared.baseURL = "test://localhost/"
         FakeServer.register()
     }
-    
+
     override class func tearDown() {
         FakeServer.unregister()
     }
-    
+
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -30,7 +30,7 @@ class AGNCoreTests: XCTestCase {
 
     func testErrorRequest() {
         let expectation = self.expectation(description: "Error Request expectation")
-        AGNetwork.shared.get(from: "error", parameters: nil, convertTo: EmptyResponse.self) { (response, error) in
+        AGNetwork.shared.get(from: "error", parameters: nil, convertTo: EmptyResponse.self) { (_, error) in
             XCTAssertNotNil(error, "Error must appear")
             let errorCode = (error! as NSError).code
             XCTAssertEqual(errorCode, 401, "Wrong error code: \(errorCode)")
@@ -38,15 +38,15 @@ class AGNCoreTests: XCTestCase {
             XCTAssertEqual(errorMessage, "Authentification failed", "Wrong error message: \(errorMessage)")
             let domain = (error! as NSError).domain
             XCTAssertEqual(domain, "AGNetwork", "Wrong error domain: \(domain)")
-                        
+
             expectation.fulfill()
         }
         self.wait(for: [expectation], timeout: 15.0)
     }
-    
+
     func testErrorWithDomainRequest() {
         let expectation = self.expectation(description: "Error Request expectation")
-        AGNetwork.shared.get(from: "errorWithDomain", parameters: nil, convertTo: EmptyResponse.self) { (response, error) in
+        AGNetwork.shared.get(from: "errorWithDomain", parameters: nil, convertTo: EmptyResponse.self) { (_, error) in
             XCTAssertNotNil(error, "Error must appear")
             let errorCode = (error! as NSError).code
             XCTAssertEqual(errorCode, 401, "Wrong error code: \(errorCode)")
@@ -54,10 +54,10 @@ class AGNCoreTests: XCTestCase {
             XCTAssertEqual(errorMessage, "Authentification failed", "Wrong error message: \(errorMessage)")
             let domain = (error! as NSError).domain
             XCTAssertEqual(domain, "global", "Wrong error domain: \(domain)")
-            
+
             expectation.fulfill()
         }
         self.wait(for: [expectation], timeout: 15.0)
     }
-    
+
 }
