@@ -8,21 +8,20 @@
 
 import Foundation
 
-fileprivate let errorDomain = "AGNetwork"
+private let errorDomain = "AGNetwork"
 
 public class NetworkError: Decodable {
     var code: Int?
     var message: String?
     var domain: String?
-    
+
     var error: Error {
-        get {
-            return NSError(domain: domain ?? errorDomain, code: code ?? -1, userInfo: [NSLocalizedDescriptionKey: message ?? ""])
-        }
+        let userInfo =  [NSLocalizedDescriptionKey: message ?? ""]
+        return NSError(domain: domain ?? errorDomain, code: code ?? -1, userInfo: userInfo)
     }
 }
 
-public struct AGNResponse<T : Decodable>: Decodable {
+public struct AGNResponse<T: Decodable>: Decodable {
     let error: NetworkError?
     let errors: [NetworkError]?
     let data: T?
