@@ -45,6 +45,9 @@
 		2764480D214C4BB500414BAE /* AGNHTTPMethodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGNHTTPMethodTests.swift; sourceTree = "<group>"; };
 		2764480F214C4BB500414BAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27644819214C4C9400414BAE /* AGNHTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGNHTTPMethod.swift; sourceTree = "<group>"; };
+		F60C17632163B0AB00C4033E /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .swiftlint.yml; path = ../.swiftlint.yml; sourceTree = "<group>"; };
+		F60C17652163B0B700C4033E /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
+		F60C17672163B0C100C4033E /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +93,9 @@
 				27644801214C4BB500414BAE /* AGNetwork */,
 				2764480C214C4BB500414BAE /* AGNetworkTests */,
 				27644800214C4BB500414BAE /* Products */,
+				F60C17672163B0C100C4033E /* .gitignore */,
+				F60C17652163B0B700C4033E /* .travis.yml */,
+				F60C17632163B0AB00C4033E /* .swiftlint.yml */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,6 +154,7 @@
 				276447FB214C4BB500414BAE /* Sources */,
 				276447FC214C4BB500414BAE /* Frameworks */,
 				276447FD214C4BB500414BAE /* Resources */,
+				F60C17622163AC8400C4033E /* Swift Lint */,
 			);
 			buildRules = (
 			);
@@ -232,6 +239,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F60C17622163AC8400C4033E /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		276447FB214C4BB500414BAE /* Sources */ = {
